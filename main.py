@@ -82,7 +82,7 @@ def start_game(q_list, design, s):
 
     current_score = 0
     temp = []
-    valids ={'a': 0, 'b': 1, 'c': 2, 'd': 3}
+    valids = {'a': 0, 'b': 1, 'c': 2, 'd': 3}
 
     while True:
 
