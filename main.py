@@ -2,6 +2,8 @@
     TITLE: ASK
     VERSION: 0.1
     CODER: TAUSEEF HILAL TANTARY
+
+    This is a basic text based quiz game.
 """
 
 # Import necessary modules
@@ -47,9 +49,9 @@ with open("dictionary.txt", 'r') as dict_file:
 
 SCORES = """
 ==================================================================
-                        RECENT SCORES
+                            RECENT SCORES
 ==================================================================
-                  (DATE)    (TIME)   (SCORE)
+                  (DATE)    (TIME)   (SCORE)  (HIGHSCORES)
 """
 
 with open("scores.txt", 'r') as scr_file:
@@ -80,7 +82,7 @@ def start_game(q_list, design, s):
 
     current_score = 0
     temp = []
-    valids = {'a': 0, 'b': 1, 'c': 2, 'd': 3}
+    valids ={'a': 0, 'b': 1, 'c': 2, 'd': 3}
 
     while True:
 
@@ -143,9 +145,20 @@ def show_scores(scores, score_file, spaced):
         (Under construction)
     """
 
+    temp = []
+    scrs = []
+    for _ in score_file:
+        temp.append((score_file.index(_), int(_[23:27])))
+        scrs.append(temp[-1][1])
+
+    index = temp[scrs.index(max(scrs))][0]
+
     print(scores)
     for i, j in enumerate(score_file[:10]):
-        print("            [{:02}] {}".format((i + 1), j[:-1]))
+        if i == index:
+            print("           [{:02}] {}\t  ***".format((i + 1), j[:-1]))
+            continue
+        print("           [{:02}] {}".format((i + 1), j[:-1]))
     input(f"{spaced}")
     key_sound.play()
 
@@ -157,8 +170,8 @@ def generate_score(scr, data):
     _ = datetime.datetime.now()
 
     with open("scores.txt", 'w') as update:
-        update.write(_.strftime("%Y-%m-%d %H:%M:%S") + f" {str(scr):0>4}\n")
-        update.writelines(data)
+        update.write(_.strftime("%Y-%m-%d %H:%M:%S") + f"    {str(scr):0>4}\n")
+        update.writelines(data[:9])
 
     with open("scores.txt", 'r') as update:
         new_scr = update.readlines()
