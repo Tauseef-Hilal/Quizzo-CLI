@@ -147,8 +147,8 @@ def show_scores(scores, score_file, spaced):
 
     temp = []
     scrs = []
-    for _ in score_file:
-        temp.append((score_file.index(_), int(_[23:27])))
+    for _ in enumerate(score_file):
+        temp.append((_[0], int(_[1][23:27])))
         scrs.append(temp[-1][1])
 
     index = temp[scrs.index(max(scrs))][0]
