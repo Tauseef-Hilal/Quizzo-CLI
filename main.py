@@ -88,7 +88,7 @@ def start_game(q_list, design, s):
     while True:
 
         if len(temp) == len(q_list) - 1:
-            return streak, current_score
+            return current_score
 
         master = choice(q_list)
         if master in temp:
@@ -131,7 +131,7 @@ def start_game(q_list, design, s):
                     streak, current_score = correct(streak, current_score)
                     break
                 wrong()
-                return streak, current_score
+                return current_score
 
 
 def correct(c_streak, c_score):
