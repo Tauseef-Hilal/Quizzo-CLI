@@ -102,9 +102,15 @@ def start_game(q_list, design, s):
 
         while True:
             clear_screen()
-            print(design.format(
-                current_score, quest, choices[0], choices[1], choices[2], choices[3][:-1])
-            )
+
+            if master == q_list[-1]:
+                print(design.format(
+                    current_score, quest, choices[0], choices[1], choices[2], choices[3])
+                )
+            else:
+                print(design.format(
+                    current_score, quest, choices[0], choices[1], choices[2], choices[3][:-1])
+                )
             guess = input("Choose an option >>> ").lower()
             key_sound.play()
 
@@ -154,12 +160,12 @@ def show_scores(scores, score_file, spaced):
     index = temp[scrs.index(max(scrs))][0]
 
     print(scores)
-    for i, j in enumerate(score_file[:10]):
+    for i, j in enumerate(score_file[:]):
         if i == index:
             print("           [{:02}] {}\t  ***".format((i + 1), j[:-1]))
             continue
         print("           [{:02}] {}".format((i + 1), j[:-1]))
-    input(f"{spaced}")
+    input(f"\n{spaced}")
     key_sound.play()
 
 def generate_score(scr, data):
