@@ -169,7 +169,7 @@ def show_scores(scores, score_file, spaced):
     print(scores)
     for i, j in enumerate(score_file[:]):
         if i == index:
-            print("           [{:02}] {}\t  ***".format((i + 1), j[:-1], ))
+            print("           [{:02}] {}\t  ***".format((i + 1), j[:-1]))
             continue
         print("           [{:02}] {}".format((i + 1), j[:-1]))
     input(f"\n{spaced}")
