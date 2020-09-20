@@ -1,5 +1,5 @@
 """
-    TITLE: ASK
+    TITLE: QUIZO
     VERSION: 0.1
     CODER: TAUSEEF HILAL TANTARY
 
@@ -26,7 +26,7 @@ pygame.mixer.music.play(-1)
 # Formats
 MENU = """
 ==================================================================
-                       ASK v0.1
+                       QUIZO v0.1
 ==================================================================
                     [1] Start Game
                     [2] View Highscore
@@ -36,7 +36,7 @@ MENU = """
 
 DESIGN = """
 ==================================================================
-                                                    Score: {:7}
+Streak: {:3}                                          Score: {:6}
 ==================================================================
 {}
 ==================================================================
@@ -59,7 +59,7 @@ with open("scores.txt", 'r') as scr_file:
 
 CREDITS = """
 ==================================================================
-                  TITLE: ASK
+                  TITLE: QUIZO
                   VERSION: 0.1
                   CODER: TAUSEEF HILAL TANTARY
 
@@ -80,14 +80,15 @@ def start_game(q_list, design, s):
         Start the real game
     """
 
-    current_score = 0
     temp = []
+    streak = 0
+    current_score = 0
     valids = {'a': 0, 'b': 1, 'c': 2, 'd': 3}
 
     while True:
 
         if len(temp) == len(q_list) - 1:
-            return current_score
+            return streak, current_score
 
         master = choice(q_list)
         if master in temp:
@@ -105,11 +106,13 @@ def start_game(q_list, design, s):
 
             if master == q_list[-1]:
                 print(design.format(
-                    current_score, quest, choices[0], choices[1], choices[2], choices[3])
+                    int(streak), current_score, quest,
+                    choices[0], choices[1], choices[2], choices[3])
                 )
             else:
                 print(design.format(
-                    current_score, quest, choices[0], choices[1], choices[2], choices[3][:-1])
+                    int(streak), current_score, quest,
+                    choices[0], choices[1], choices[2], choices[3][:-1])
                 )
             guess = input("Choose an option >>> ").lower()
             key_sound.play()
@@ -122,20 +125,24 @@ def start_game(q_list, design, s):
             if guess in valids.keys():
                 if valids[guess] == 3:
                     if choices[valids[guess]][:-1] == ans:
-                        current_score = correct(current_score)
+                        streak, current_score = correct(streak, current_score)
                         break
                 if choices[valids[guess]] == ans:
-                    current_score = correct(current_score)
+                    streak, current_score = correct(streak, current_score)
                     break
                 wrong()
-                return current_score
+                return streak, current_score
 
 
-def correct(current):
+def correct(c_streak, c_score):
     """
         Increase score by 5 points
     """
-    return current + 5
+
+    c_score += 5
+    c_streak = c_score / 5
+
+    return c_streak, c_score
 
 def wrong():
     """
@@ -162,7 +169,7 @@ def show_scores(scores, score_file, spaced):
     print(scores)
     for i, j in enumerate(score_file[:]):
         if i == index:
-            print("           [{:02}] {}\t  ***".format((i + 1), j[:-1]))
+            print("           [{:02}] {}\t  ***".format((i + 1), j[:-1], ))
             continue
         print("           [{:02}] {}".format((i + 1), j[:-1]))
     input(f"\n{spaced}")
