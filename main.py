@@ -155,7 +155,6 @@ def wrong():
 def show_scores(scores, score_file, spaced):
     """
         Show recent scores with dates
-        (Under construction)
     """
 
     temp = []
