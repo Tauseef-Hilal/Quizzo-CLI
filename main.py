@@ -218,30 +218,32 @@ def clear_screen():
     return system("cls")
 
 
-# Game loop
-while True:
+if __name__ == '__main__':
 
-    clear_screen()
-    print(MENU)
-    option = input("Choose an option >>> ")
-    key_sound.play()
+    # Game loop
+    while True:
 
-    if not option in VALID:
-        print(f"Invalid Option!{SPACES}")
-        continue
+        clear_screen()
+        print(MENU)
+        option = input("Choose an option >>> ")
+        key_sound.play()
 
-    if option == '4':
-        clear_screen()
-        show_exit()
-    elif option == '3':
-        clear_screen()
-        show_credits(CREDITS)
-        continue
-    elif option == '2':
-        clear_screen()
-        show_scores(SCORES, score_data, SPACES)
-        continue
-    elif option == '1':
-        score = start_game(q_data, DESIGN, SPACES)
-        score_data = generate_score(score, score_data)
-        continue
+        if not option in VALID:
+            print(f"Invalid Option!{SPACES}")
+            continue
+
+        if option == '4':
+            clear_screen()
+            show_exit()
+        elif option == '3':
+            clear_screen()
+            show_credits(CREDITS)
+            continue
+        elif option == '2':
+            clear_screen()
+            show_scores(SCORES, score_data, SPACES)
+            continue
+        elif option == '1':
+            score = start_game(q_data, DESIGN, SPACES)
+            score_data = generate_score(score, score_data)
+            continue
