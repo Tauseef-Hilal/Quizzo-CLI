@@ -14,14 +14,6 @@ from os import system
 from random import choice
 import pygame
 
-# Initialize music
-pygame.init()
-pygame.mixer.init()
-
-key_sound = pygame.mixer.Sound('key.wav')
-pygame.mixer.music.load('bg_music.mp3')
-pygame.mixer.music.play(-1)
-
 
 # Formats
 MENU = """
@@ -44,8 +36,20 @@ Streak: {:3}                                          Score: {:6}
         (c) {:25}(d) {}
 =================================================================="""
 
-with open("dictionary.txt", 'r') as dict_file:
-    q_data = dict_file.readlines()
+ERROR = """
+==================================================================
+                       QUIZO v0.1
+==================================================================
+            [ERROR] Question file not found
+=================================================================="""
+
+try:
+    with open("dictionary.txt", 'r') as dict_file:
+        q_data = dict_file.readlines()
+except FileNotFoundError:
+    print(ERROR)
+    sys.exit(time.sleep(2))
+
 
 SCORES = """
 ==================================================================
@@ -69,6 +73,15 @@ CREDITS = """
 
           Thank you for trying out my game. Hope you liked it.
 =================================================================="""
+
+
+# Initialize music
+pygame.init()
+pygame.mixer.init()
+
+key_sound = pygame.mixer.Sound('key.wav')
+pygame.mixer.music.load('bg_music.mp3')
+pygame.mixer.music.play(-1)
 
 
 # Important variables
@@ -166,7 +179,7 @@ def show_scores(scores, score_file, spaced):
         print("\t\tCurrently, there is nothing in here...")
         input(f"\n{spaced}")
         key_sound.play()
-        
+
     else:
         temp = []
         scrs = []
