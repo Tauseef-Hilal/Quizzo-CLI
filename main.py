@@ -54,8 +54,12 @@ SCORES = """
                   (DATE)    (TIME)   (SCORE)  (HIGHSCORES)
 """
 
-with open("scores.txt", 'r') as scr_file:
-    score_data = scr_file.readlines()
+try:
+    with open("scores.txt", 'r') as scr_file:
+        score_data = scr_file.readlines()
+except FileNotFoundError:
+    with open("scores.txt", 'w+') as scr_file:
+        score_data = scr_file.readlines()
 
 CREDITS = """
 ==================================================================
@@ -156,23 +160,30 @@ def show_scores(scores, score_file, spaced):
     """
         Show recent scores with dates
     """
+    
+    if len(score_file) == 0:
+        print(scores)
+        print("\t\tCurrently, there is nothing in here...")
+        input(f"\n{spaced}")
+        key_sound.play()
+        
+    else:
+        temp = []
+        scrs = []
+        for _ in enumerate(score_file):
+            temp.append((_[0], int(_[1][23:27])))
+            scrs.append(temp[-1][1])
 
-    temp = []
-    scrs = []
-    for _ in enumerate(score_file):
-        temp.append((_[0], int(_[1][23:27])))
-        scrs.append(temp[-1][1])
+        index = temp[scrs.index(max(scrs))][0]
 
-    index = temp[scrs.index(max(scrs))][0]
-
-    print(scores)
-    for i, j in enumerate(score_file[:]):
-        if i == index:
-            print("           [{:02}] {}\t  ***".format((i + 1), j[:-1]))
-            continue
-        print("           [{:02}] {}".format((i + 1), j[:-1]))
-    input(f"\n{spaced}")
-    key_sound.play()
+        print(scores)
+        for i, j in enumerate(score_file[:]):
+            if i == index:
+                print("           [{:02}] {}\t  ***".format((i + 1), j[:-1]))
+                continue
+            print("           [{:02}] {}".format((i + 1), j[:-1]))
+        input(f"\n{spaced}")
+        key_sound.play()
 
 def generate_score(scr, data):
     """
