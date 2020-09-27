@@ -32,7 +32,7 @@ What is the best material to make permanent magnets?-Alnico-Copper~Alnico~Iron~A
 Which of the following is the ultimate source of energy?-Sun-Sun~Water~Fossil Fuels~Uranium
 Which of the following gases is the main constituent of natural gas?-Methane-Propane~Butane~Methane~Ethane
 Which element is used in solar cells?-Silicon-Carbon~Phosphorus~Sulphur~Silicon
-Whcih of the following has the highest Carbon content?-Anthracite-Lignite~Peat~Anthracite~Bituminous
+Which of the following has the highest Carbon content?-Anthracite-Lignite~Peat~Anthracite~Bituminous
 What is the unit of Calorific value of a substance?-J/kg-Jkg~Kcal~J/kg~J
 Which of the following is the SI unit of Force?-Both (b) and (c)-Dyne~kgm/s^2~N~Both (b) and (c)
 1 Pie radian = ___ degree-180-90~180~270~360
@@ -89,7 +89,7 @@ One horse power is equal to:-746 watt-746 watt~786 watt~874 watt~976 watt
 Bar is the unit of:-Atmospheric Pressure-Atmospheric Pressure~Temperature~Heat~Current
 One Joule is equal to:-10^7 erg-10^8 erg~10^7 erg~10^6 erg~10^5 erg
 Kilowatt is a unit to measure:-Power-Power~Current~Work~Electricity
-Electric current is measure by:-Ammeter-Ammeter~Voltmeter~Anemometer~Commutator
+Electric current is measured by:-Ammeter-Ammeter~Voltmeter~Anemometer~Commutator
 Knot is a unit of speed of which of the following?-Ship-Ship~Aeroplane~Sound Waves~Light Waves
 Which of the following is used as a moderator in nuclear reactor?-Graphite-Graphite~Radium~Thorium~Water
 Isotopes are separated by:-Distillation-Crystallisation~Distillation~Filtration~Sublimation
