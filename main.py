@@ -69,9 +69,9 @@ CREDITS = """
 ==================================================================
                   TITLE: QUIZO
                   VERSION: 0.1
-                  CODER: TAUSEEF HILAL TANTARY
+            CODER: TAUSEEF HILAL TANTARY
 
-          Thank you for trying out my game. Hope you liked it.
+        Thank you for trying out my game. Hope you liked it.
 =================================================================="""
 
 
