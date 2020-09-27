@@ -53,9 +53,9 @@ except FileNotFoundError:
 
 SCORES = """
 ==================================================================
-                            RECENT SCORES
+                        RECENT SCORES
 ==================================================================
-                  (DATE)    (TIME)   (SCORE)  (HIGHSCORES)
+           [##]   (DATE)    (TIME)   (SCORE)  (HIGHSCORES)
 """
 
 try:
