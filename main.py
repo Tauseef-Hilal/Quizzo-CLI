@@ -105,7 +105,9 @@ def start_game(q_list, design, s):
 
     while True:
 
-        if len(temp) == len(q_list) - 1:
+        if len(temp) == len(q_list):
+            print(f"{s}\nCongratulations! You have completed the game...\n{s}")
+            time.sleep(2)
             return current_score
 
         master = choice(q_list)
